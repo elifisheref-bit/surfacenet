@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "surfacenet"
+version = "0.1.0"
+description = "Convert LiDAR scans into printable 2D nets"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "scipy",
+    "shapely",
+    "svgwrite",
+    "trimesh",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+surfacenet = "surfacenet.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["surfacenet*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
